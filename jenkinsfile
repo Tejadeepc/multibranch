@@ -9,16 +9,16 @@ pipeline {
                  branch: 'main'
         }
     }
-    steps('build') {
-        step {
+        stage('build') {
+         steps {
             sh 'building code ....'
             sh 'static code analysis'
             sh 'archive the package into jfrog'
         
         }
     }
-    stage('deploy') {
-        steps {
+        stage('deploy') {
+         steps {
             sh 'deploying to production'
         }
     }
