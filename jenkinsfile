@@ -20,6 +20,14 @@ pipeline {
         
         }
     }
+    steps('system test environment')
+    {
+        steps {
+            sh 'using terraform create environment'
+            sh 'use kubectl to deploy'
+            sh 'run end to end system tests'
+        }
+    }
     stage('deploy') {
         steps {
             sh 'deploying to production'
