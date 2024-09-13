@@ -25,4 +25,10 @@ pipeline {
             sh 'deploying to production'
         }
     }
+        stage('test') {
+         steps {
+            sh 'run end to end performance tests'
+            sh 'display test results'
+         }
+        }
 }
