@@ -1,28 +1,29 @@
 pipeline {
     agent any 
     tools {
-        maven 'MAVEN_3.9.7'
+        maven 'maven3.8.7'
     }
     triggers {
         pollSCM('* * * * *')
     }
     stages {
         stage('VCS') {
+          steps { 
             git url: 'https://github.com/Tejadeepc/spring-petclinic.git',
                  branch: 'main'
         }
     }
         stage('build') {
          steps {
-            sh 'building code ....'
-            sh 'static code analysis'
-            sh 'archive the package into jfrog'
+            sh 'echo building code ....'
+            sh 'echo static code analysis'
+            sh 'echo archive the package into jfrog'
         
         }
     }
         stage('deploy') {
          steps {
-            sh 'deploying to production'
+            sh 'echo deploying to production'
         }
     }
 }
